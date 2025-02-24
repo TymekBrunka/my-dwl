@@ -21,12 +21,19 @@ static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You ca
 /* logging */
 static int log_level = WLR_ERROR;
 
+static const Env envs[] = {
+	/* variable			value */
+	{ "XDG_CURRENT_DESKTOP",	"wlr" },
+	{ "MOZ_ENABLE_WAYLAND",	    "1" },
+};
+
 /* Autostart */
 static const char *const autostart[] = {
         "sh", "-c", "~/scripts/way-bg.sh", NULL,
 		"sh", "-c", "~/scripts/set-theme.sh", NULL,
 		// "sh", "-c", "export MOZ_ENABLE_WAYLAND=true", NULL,
 		// "sh", "-c", "export XDG_CURRENT_DESKTOP=wlr", NULL,
+        "sh", "-c", "sleep 3 && waybar &", NULL,
 		"sh", "-c", "/usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr", NULL,
 		// "someblocks", NULL,
         NULL /* terminate */
